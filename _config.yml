@@ -7,7 +7,7 @@
 # server process.
 
 # Basic Site Settings
-locale                   : "en-US"
+locale                   : #"en-US"
 title                    : "徐顺的个人主页"
 title_separator          : "-"
 name                     : &name "徐顺"
@@ -21,12 +21,12 @@ repository               : "XuDashun123/xudashun123.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : #"profile.png"
   name             : "徐顺"
   pronouns         : # example: "she/her"  
   bio              : "基础数学博士"
-  location         : "Earth"
-  employer         : "Tongji University"
+  location         : #"Earth"
+  employer         : "同济大学"
   uri              : # URL
   email            : "shunxu@tongji.edu.cn" 
 
