@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: #"徐顺的个人主页"
+title: "徐顺的个人主页"
 author_profile: true
 redirect_from: 
   - /about/
