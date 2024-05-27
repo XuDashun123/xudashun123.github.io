@@ -1,7 +1,7 @@
 # main links links
 #main:
-#  - title: "Publications"
-#    url: /publications/
+  - title: "论文与出版物"
+    url: /publications/
 
   #- title: "Talks"
   #  url: /talks/    
@@ -10,10 +10,10 @@
   #  url: /teaching/    
     
   #- title: "Portfolio"
-    url: /portfolio/
+  #  url: /portfolio/
         
   #- title: "Blog Posts"
-    url: /year-archive/
+  #  url: /year-archive/
     
  # - title: "CV"
   #  url: /cv/
