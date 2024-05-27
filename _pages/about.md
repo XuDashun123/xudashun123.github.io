@@ -6,6 +6,9 @@ redirect_from:
   - /about/
   - /about.html
 ---
+## 电子邮箱
+shunxu@tongji.edu.cn
+
 
 ## 研究方向
 Vertex operator algebras
