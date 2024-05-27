@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "徐顺的个人主页"
+title: ""
 author_profile: true
 redirect_from: 
   - /about/
@@ -18,6 +18,6 @@ Vertex operator algebras
 
 2019.09-2022.07，中国科学技术大学数学科学学院，硕士
 
-2022.09-，       同济大学数学科学学院，博士
+2022.09-，       同济大学数学科学学院，博士在读
 
 
