@@ -1,3 +1,12 @@
+---
+permalink: /
+title: #"徐顺的个人主页"
+author_profile: true
+redirect_from: 
+  - /about/
+  - /about.html
+---
+
 ## 研究方向
 Vertex operator algebras
 
