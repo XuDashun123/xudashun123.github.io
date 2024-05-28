@@ -4,6 +4,10 @@ body {
     padding: 0;
 }
 
+section {
+    background-color: #f0f0f0;
+}
+
 img {
     width: 100%;
     height: auto;
