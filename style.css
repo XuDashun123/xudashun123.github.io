@@ -4,8 +4,8 @@ body {
     padding: 0;
 }
 
-section {
-    background-color: #f0f0f0;
+html {
+        background-color: #95a5a6;
 }
 
 img {
@@ -14,7 +14,6 @@ img {
   }
 
 header {
-    background-color: #f0f0f0;
     padding: 20px;
     text-align: center;
 }
@@ -56,7 +55,6 @@ a {
 }
 
 footer {
-    background-color: #f0f0f0;
     padding: 20px;
     text-align: center;
 }
