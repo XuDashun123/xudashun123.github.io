@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: #333;
+  color: #fff;
+  width: 120px; /* 设定一个固定的宽度 */
+  overflow-x: hidden; /* 防止水平滚动条出现 */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 20px;
+}
+
+.sidebar li {
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.sidebar li:hover {
+  background-color: #555;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+.section {
+  margin-bottom: 20px;
+}
