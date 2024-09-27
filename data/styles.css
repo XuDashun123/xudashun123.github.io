@@ -15,11 +15,15 @@ body {
 }
 
 .sidebar {
-  background: #333;
-  color: #fff;
+  background: #304545;
+  color: hsl(0, 0%, 100%);
   width: 120px; /* 设定一个固定的宽度 */
   overflow-x: hidden; /* 防止水平滚动条出现 */
 }
+
+
+
+
 
 .sidebar ul {
   list-style: none;
@@ -31,9 +35,11 @@ body {
   cursor: pointer;
 }
 
+<!-- 选中状态
 .sidebar li:hover {
-  background-color: #555;
+  background-color: #2744b8;
 }
+-->
 
 .content {
   flex: 1;
