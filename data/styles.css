@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none; /* 移除下划线 */
+}
+
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
