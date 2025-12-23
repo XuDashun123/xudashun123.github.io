@@ -10,9 +10,24 @@ function loadContent(sectionId) {
   }
 }
 
-// 初始化时显示第一个内容
+const contentMap = {
+    'publications': 'publications-content',
+    'xiangmu': 'xiangmu-content',
+    'huojiang': 'huojiang-content',
+    'about': 'about-content',
+    'teach': 'teach-content',
+  };
+
+  // 显示全部内容
+     function showAll() {
+      for (let key in contentMap) {
+        document.getElementById(contentMap[key]).style.display = 'block';
+      }
+    }
+
+// 初始化时显示全部内容
 document.addEventListener('DOMContentLoaded', function() {
-  loadContent('about');
+  showAll();
 });
 
 

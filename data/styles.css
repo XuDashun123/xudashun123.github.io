@@ -21,7 +21,7 @@ body {
 .sidebar {
   background: #304545;
   color: hsl(0, 0%, 100%);
-  width: 120px; /* 设定一个固定的宽度 */
+  width: 100px; /* 设定一个固定的宽度 */
   overflow-x: hidden; /* 防止水平滚动条出现 */
 }
 
@@ -37,6 +37,7 @@ body {
 .sidebar li {
   padding: 10px 0;
   cursor: pointer;
+  text-align: center;
 }
 
 <!-- 选中状态
