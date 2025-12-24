@@ -1,47 +1,174 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>徐顺的学术主页</title>
-    <link rel="stylesheet" href="data/styles.css">
-    <script src="data/script.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>徐顺的学术主页</title>
+   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 禁用 body 滚动 */
+    html, body {
+      height: 100%;
+      overflow: hidden; /* 关键：禁止全局滚动 */
+      font-family: "Microsoft YaHei", sans-serif;
+      background: #f9f9f9;
+    }
+
+    /* 顶部导航 */
+    header {
+      background: white;
+      padding: 12px 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+
+    nav a {
+      margin-right: 15px;
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    /* 主布局容器：占满剩余空间 */
+    .main-layout {
+      display: flex;
+      height: calc(100vh ); /* 减去 header 高度 */
+    }
+
+    /* 左侧栏：固定宽度，不滚动 */
+    .sidebar {
+      width: 220px;
+      padding: 20px;
+      background: white;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+      /* 注意：这里不需要 sticky/fixed，因为它本身不在滚动区 */
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ddd;
+      display: block;
+    }
+
+    .sidebar h2 {
+      margin: 15px 0 8px;
+    }
+
+    .sidebar p, .sidebar ul {
+      color: #555;
+      font-size: 0.95em;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .sidebar li {
+      margin: 6px 0;
+    }
+
+    .sidebar a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    /* 右侧内容区：可滚动 */
+    .content-wrapper {
+      flex: 1;
+      overflow-y: auto; /* 关键：只在这里滚动 */
+      padding: 20px;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .section h2 {
+      font-size: 1.3em;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .content-wrapper ul {
+      padding-left: 20px;
+    }
+
+    .content-wrapper li {
+      margin: 8px 0;
+    }
+
+    /* 响应式：小屏时恢复全页滚动（避免体验差） */
+    @media (max-width: 768px) {
+      html, body {
+        overflow: auto; /* 小屏允许 body 滚动 */
+      }
+      .main-layout {
+        flex-direction: column;
+        height: auto;
+      }
+      .sidebar {
+        width: 100%;
+        text-align: center;
+        box-shadow: none;
+        border-bottom: 1px solid #eee;
+      }
+      .avatar {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+      }
+      .content-wrapper {
+        overflow-y: visible;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <nav class="sidebar">
-            <ul>
-               <li onclick="showAll()"><b>首页</b></li>
-                <li onclick="loadContent('about')"><b>简介</b></li>
-                <li onclick="loadContent('publications')"><b>论文</b></li>
-                <li onclick="loadContent('xiangmu')"><b>项目</b></li>
-                <li onclick="loadContent('teach')"><b>教学</b></li>
-                <li onclick="loadContent('huojiang')"><b>获奖</b></li>
-            </ul>
-        </nav>
-        <main class="content">
-            
-            <section id="about-content" class="section" style="display: none;">
-              <h2>徐顺</h2>
-              <p>同济大学基础数学专业在读博士生. </p>
-              <hr>
-              
-              <p>电子邮箱: shunxu@tongji.edu.cn</p>
-            <p>研究方向: Vertex operator algebras.<br>
-              </p>
-              <hr>
-              
-              教育背景
-              <p>2022.09-至今,  同济大学数学科学学院, 博士在读.</p>
+
+
+
+<div class="main-layout">
+  <!-- 左侧固定信息 -->
+  <aside class="sidebar">
+    <img src="data/证件照.jpg" alt="头像" class="avatar" />
+    <h2 >徐顺</h2>
+    <p>同济大学</p>
+        <br/>
+    <p>顶点算子代数</p>
+    <ul>
+      <li>📍 上海</li>
+      <li>✉️ <a href="mailto:shunxu@tongji.edu.cn">Email</a></li>
+      <li>🆔 <a href="https://orcid.org/0009-0006-8080-8107">ORCID</a></li>
+    </ul>
+  </aside>
+
+  <!-- 右侧可滚动内容 -->
+  <main class="content-wrapper">
+    <section id="intro" class="section">
+      <h2>简介</h2>
+      <p>同济大学基础数学专业在读博士生. 研究方向: 顶点算子代数.</p>
+    </section>
+
+    <section id="edu" class="section">
+      <h2>学习与工作经历</h2>
+      <p>2022.09-至今,  同济大学数学科学学院, 博士在读.</p>
               <p>2019.09-2022.07, 中国科学技术大学数学科学学院, 硕士;</p>
               <p>2015.09-2019.07, 合肥工业大学数学学院, 学士;</p>
-              <hr>
-              
-            </section>
-            <section id="publications-content" class="section" style="display: none;">
-              <h2>论文</h2>
-              <p>[7] 
+    </section>
+
+    <section id="papers" class="section">
+      <h2>论文</h2>
+        <p>[7] 
                 <b>Shun Xu</b>, Twisted bimodules and associative algebras associated to VOAs, 2025. <a href="
 
 
@@ -89,27 +216,27 @@ https://arxiv.org/abs/2505.19162">(arXiv)</a> (submitted)
 <a href="data/JA1.pdf">
                     (PDF)
                 </a>
-              </p>
-              
-             <hr>
-            </section>
-            <section id="xiangmu-content" class="section" style="display: none;">
+            </p>
+    </section>
+
+    <section id="xiangmu-content" class="section">
               <h2>项目</h2>
               <p>
                 2023.01-2026.12, 《顶点算子代数结构与表示理论的若干问题》, 国家自然科学基金面上项目, 参与.
               </p>
               <p>2017年, 基于响应面和最优化方法的油藏历史拟合方法研究, 国家级大学生创新创业训练项目, 参与. <a href="https://maths.hfut.edu.cn/info/1047/3617.htm">[链接]</a></p>
-            <hr>
+       
             </section>
-            <section id="teach-content" class="section" style="display: none;">
+
+            <section id="teach-content" class="section">
                 <h2>教学</h2>
                 <p>2024.09-至今,  矩阵论助教. (授课老师：<a href="https://math.tongji.edu.cn/info/1114/8439.htm">韩建智副教授</a>)</p>
                 <p>2024.07-2024.08, Monoidal Category 讨论班主讲. (<a href="data/monoidal category/monoidal_category.html">课程主页</a>)</p>
                 <p>2023.09-2023.12,  矩阵论助教. (授课老师：<a href="https://math.tongji.edu.cn/info/1114/8439.htm">韩建智副教授</a>)</p>
                 <p>2019.09-2019.12,  代数学基础助教. (授课老师：<a href="http://staff.ustc.edu.cn/~juele/">乐珏副教授</a>)</p>
-                <hr>
+           
             </section>
-            <section id="huojiang-content" class="section" style="display: none;">
+            <section id="huojiang-content" class="section">
               <h2>获奖</h2>
               <p>2024-2025学年同济大学博士研究生国家奖学金.</p>
               <p>第十届大学生数学竞赛(数学类)安徽赛区第三名，决赛全国二等奖.
@@ -141,10 +268,13 @@ https://arxiv.org/abs/2505.19162">(arXiv)</a> (submitted)
             <p>2014年安徽省高中数学联赛二等奖.
             <a href="https://ahmath.ustc.edu.cn/_upload/article/files/1a/45/8d7468f74dd5976fd6c3cc186b8f/8dbb9c02-f15f-4162-90a1-461921e9dae0.pdf">[链接]</a>
             </p>
-            <hr>
+         
           </section>
-        </main>
-    </div>
-</body>
 
+    <!-- 添加足够内容以触发滚动 -->
+   
+  </main>
+</div>
+
+</body>
 </html>
