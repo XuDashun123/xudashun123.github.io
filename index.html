@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>徐顺的学术主页</title>
-   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <!-- MathJax 支持 LaTeX -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <style>
     * {
       margin: 0;
@@ -12,45 +13,59 @@
       box-sizing: border-box;
     }
 
-    /* 禁用 body 滚动 */
-    html, body {
+    html {
       height: 100%;
-      overflow: hidden; /* 关键：禁止全局滚动 */
-      font-family: "Microsoft YaHei", sans-serif;
-      background: #f9f9f9;
     }
 
-    /* 顶部导航 */
+    body {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      font-family: "Microsoft YaHei", sans-serif;
+      background: #f9f9f9;
+      overflow: hidden; /* 禁止全局滚动 */
+    }
+
     header {
       background: white;
       padding: 12px 20px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      z-index: 10;
     }
 
     nav a {
-      margin-right: 15px;
+  margin-right: 15px;
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 6px 12px; /* 增加可点击区域 */
+  border-radius: 4px; /* 圆角 */
+  transition: background-color 0.2s ease; /* 平滑过渡 */
+}
+
+nav a:hover {
+  background-color: #e6f0ff; /* 浅蓝背景高亮 */
+  color: #004c99; /* 稍深的蓝色 */
+}
+
+    li a {
       color: #0066cc;
+    }
+
+    a {
       text-decoration: none;
     }
 
-     a {
-    text-decoration: none;
-  }
-
-    /* 主布局容器：占满剩余空间 */
     .main-layout {
       display: flex;
-      height: calc(100vh ); /* 减去 header 高度 */
+      flex: 1;
+      min-height: 0; /* 关键：允许子容器滚动 */
     }
 
-    /* 左侧栏：固定宽度，不滚动 */
     .sidebar {
       width: 220px;
       padding: 20px;
       background: white;
       box-shadow: 2px 0 5px rgba(0,0,0,0.05);
-      /* 注意：这里不需要 sticky/fixed，因为它本身不在滚动区 */
     }
 
     .avatar {
@@ -64,31 +79,28 @@
 
     .sidebar h2 {
       margin: 15px 0 8px;
+     
     }
 
     .sidebar p, .sidebar ul {
       color: #555;
       font-size: 0.95em;
+      
     }
 
     .sidebar ul {
       list-style: none;
-      margin-top: 10px;
+      margin-top: 15px;
+      padding: 0;
     }
 
     .sidebar li {
-      margin: 6px 0;
+      margin: 8px 0;
     }
 
-    .sidebar a {
-      color: #0066cc;
-      text-decoration: none;
-    }
-
-    /* 右侧内容区：可滚动 */
     .content-wrapper {
       flex: 1;
-      overflow-y: auto; /* 关键：只在这里滚动 */
+      overflow-y: auto; /* 右侧可滚动 */
       padding: 20px;
     }
 
@@ -97,10 +109,17 @@
     }
 
     .section h2 {
-      font-size: 1.3em;
+      font-size: 1.4em;
       margin-bottom: 12px;
       padding-bottom: 6px;
       border-bottom: 1px solid #eee;
+      color: #333;
+    }
+
+    .content-wrapper p,
+    .content-wrapper ul {
+      line-height: 1.7;
+      color: #444;
     }
 
     .content-wrapper ul {
@@ -111,13 +130,14 @@
       margin: 8px 0;
     }
 
-    /* 响应式：小屏时恢复全页滚动（避免体验差） */
+    /* 响应式：小屏优化 */
     @media (max-width: 768px) {
-      html, body {
-        overflow: auto; /* 小屏允许 body 滚动 */
+      body {
+        overflow: auto;
       }
       .main-layout {
         flex-direction: column;
+        flex: none;
         height: auto;
       }
       .sidebar {
@@ -125,6 +145,7 @@
         text-align: center;
         box-shadow: none;
         border-bottom: 1px solid #eee;
+        padding: 20px 10px;
       }
       .avatar {
         width: 100px;
@@ -133,26 +154,38 @@
       }
       .content-wrapper {
         overflow-y: visible;
+        padding: 20px 15px;
+      }
+      nav a {
+        display: inline-block;
+        margin: 5px 10px;
       }
     }
   </style>
 </head>
 <body>
 
-
+<header>
+  <nav>
+    <a href="#intro">简介</a>
+    <a href="#edu">经历</a>
+    <a href="#papers">论文</a>
+    <a href="#xiangmu-content">项目</a>
+    <a href="#teach-content">教学</a>
+    <a href="#huojiang-content">获奖</a>
+  </nav>
+</header>
 
 <div class="main-layout">
   <!-- 左侧固定信息 -->
   <aside class="sidebar">
     <img src="data/证件照.jpg" alt="头像" class="avatar" />
-    <h2 >徐顺</h2>
-    <p>同济大学</p>
-        <br/>
-    <p>顶点算子代数</p>
+    <h2>徐顺</h2>
+    <p>同济大学<br/><br/>顶点算子代数</p>
     <ul>
       <li>📍 上海</li>
-      <li>✉️ <a href="mailto:shunxu@tongji.edu.cn">Email</a></li>
-      <li>🆔 <a href="https://orcid.org/0009-0006-8080-8107">ORCID</a></li>
+      <li>✉️ <a href="mailto:shunxu@tongji.edu.cn"><b>Email</b></a></li>
+      <li>🆔 <a href="https://orcid.org/0009-0006-8080-8107" target="_blank"><b>ORCID</b></a></li>
     </ul>
   </aside>
 
@@ -160,125 +193,110 @@
   <main class="content-wrapper">
     <section id="intro" class="section">
       <h2>简介</h2>
-      <p>同济大学基础数学专业在读博士生. 研究方向: 顶点算子代数.</p>
+      <p>同济大学基础数学专业在读博士生。研究方向：顶点算子代数。</p>
     </section>
 
     <section id="edu" class="section">
       <h2>学习与工作经历</h2>
-      <p>2022.09-至今,  同济大学数学科学学院, 博士在读.</p>
-              <p>2019.09-2022.07, 中国科学技术大学数学科学学院, 硕士;</p>
-              <p>2015.09-2019.07, 合肥工业大学数学学院, 学士;</p>
+      <p>2022.09 – 至今，同济大学数学科学学院，博士在读。</p>
+      <p>2019.09 – 2022.07，中国科学技术大学数学科学学院，硕士。</p>
+      <p>2015.09 – 2019.07，合肥工业大学数学学院，学士。</p>
     </section>
 
     <section id="papers" class="section">
       <h2>论文</h2>
-        <p>[7] 
-                <b>Shun Xu</b>, Twisted bimodules and associative algebras associated to VOAs, 2025. <a href="
-
-
-https://arxiv.org/abs/2512.05605
-">(arXiv)</a>  
-              </p>
-              <p>[6] 
-                <b>Shun Xu</b>, Twisted \(\phi\)-coordinated modules for vertex algebras and Zhu's correspondence theorem, 2025. <a href="
-
-
-https://arxiv.org/abs/2512.01272
-">(arXiv)</a>  
-              </p>
-              <p>[5] 
-                <b>Shun Xu</b>, Twisted associative algebras associated to vertex algebras, 2025. <a href="
-
-https://arxiv.org/abs/2506.01321">(arXiv)</a> (submitted)
-              </p>
-              <p>
-                [4] <b>Shun Xu</b> and Jianzhi Han*, Refining twisted bimodules associated to VOAs, 2025.
-<a href="
-https://arxiv.org/abs/2505.19162">(arXiv)</a> (submitted)
-              </p>
-              <p>
-                [3] <b>Shun Xu</b>, Bimodules and associative algebras associated to SVOAs over an arbitrary field, Journal of Geometry and Physics, 220 (2026), 105705. <a href="https://doi.org/10.1016/j.geomphys.2025.105705">
-                  (DOI)
-                </a> <a href="data/JGP1.pdf">
-                    (PDF)
-                </a>
-              </p>
-              
-<p>
-  [2] <b>Shun Xu</b>, Bimodules and universal enveloping algebras associated to SVOAs, Journal of Pure and Applied Algebra, 229 (9) (2025), 108037. <a href="https://doi.org/10.1016/j.jpaa.2025.108037">
-                  (DOI)
-                </a> <a href="data/JPAA1.pdf">
-                    (PDF)
-                </a>
-</p>
-
-              <p>
-                [1]  Jianzhi Han, Yukun Xiao*, and <b>Shun Xu</b>, Twisted bimodules and universal enveloping algebras associated to VOAs, Journal of Algebra 664 (2025), 1-25.
-<a href="https://doi.org/10.1016/j.jalgebra.2024.10.029">
-                    (DOI)
-                </a>
-<a href="data/JA1.pdf">
-                    (PDF)
-                </a>
-            </p>
+      <p>[7] <b>Shun Xu</b>, Twisted bimodules and associative algebras associated to VOAs, 2025. <a href="https://arxiv.org/abs/2512.05605">(arXiv)</a></p>
+      <p>[6] <b>Shun Xu</b>, Twisted \(\phi\)-coordinated modules for vertex algebras and Zhu's correspondence theorem, 2025. <a href="https://arxiv.org/abs/2512.01272">(arXiv)</a></p>
+      <p>[5] <b>Shun Xu</b>, Twisted associative algebras associated to vertex algebras, 2025. <a href="https://arxiv.org/abs/2506.01321">(arXiv)</a> (submitted)</p>
+      <p>[4] <b>Shun Xu</b> and Jianzhi Han*, Refining twisted bimodules associated to VOAs, 2025. <a href="https://arxiv.org/abs/2505.19162">(arXiv)</a> (submitted)</p>
+      <p>[3] <b>Shun Xu</b>, Bimodules and associative algebras associated to SVOAs over an arbitrary field, Journal of Geometry and Physics, 220 (2026), 105705. <a href="https://doi.org/10.1016/j.geomphys.2025.105705">(DOI)</a> <a href="data/JGP1.pdf">(PDF)</a></p>
+      <p>[2] <b>Shun Xu</b>, Bimodules and universal enveloping algebras associated to SVOAs, Journal of Pure and Applied Algebra, 229 (9) (2025), 108037. <a href="https://doi.org/10.1016/j.jpaa.2025.108037">(DOI)</a> <a href="data/JPAA1.pdf">(PDF)</a></p>
+      <p>[1] Jianzhi Han, Yukun Xiao*, and <b>Shun Xu</b>, Twisted bimodules and universal enveloping algebras associated to VOAs, Journal of Algebra 664 (2025), 1–25. <a href="https://doi.org/10.1016/j.jalgebra.2024.10.029">(DOI)</a> <a href="data/JA1.pdf">(PDF)</a></p>
     </section>
 
     <section id="xiangmu-content" class="section">
-              <h2>项目</h2>
-              <p>
-                2023.01-2026.12, 《顶点算子代数结构与表示理论的若干问题》, 国家自然科学基金面上项目, 参与.
-              </p>
-              <p>2017年, 基于响应面和最优化方法的油藏历史拟合方法研究, 国家级大学生创新创业训练项目, 参与. <a href="https://maths.hfut.edu.cn/info/1047/3617.htm">[链接]</a></p>
-       
-            </section>
+      <h2>项目</h2>
+      <p>2023.01–2026.12，《顶点算子代数结构与表示理论的若干问题》，国家自然科学基金面上项目，参与。</p>
+      <p>2017年，基于响应面和最优化方法的油藏历史拟合方法研究，国家级大学生创新创业训练项目，参与。<a href="https://maths.hfut.edu.cn/info/1047/3617.htm">[链接]</a></p>
+    </section>
 
-            <section id="teach-content" class="section">
-                <h2>教学</h2>
-                <p>2024.09-至今,  矩阵论助教. (授课老师：<a href="https://math.tongji.edu.cn/info/1114/8439.htm">韩建智副教授</a>)</p>
-                <p>2024.07-2024.08, Monoidal Category 讨论班主讲. (<a href="data/monoidal category/monoidal_category.html">课程主页</a>)</p>
-                <p>2023.09-2023.12,  矩阵论助教. (授课老师：<a href="https://math.tongji.edu.cn/info/1114/8439.htm">韩建智副教授</a>)</p>
-                <p>2019.09-2019.12,  代数学基础助教. (授课老师：<a href="http://staff.ustc.edu.cn/~juele/">乐珏副教授</a>)</p>
-           
-            </section>
-            <section id="huojiang-content" class="section">
-              <h2>获奖</h2>
-              <p>2024-2025学年同济大学博士研究生国家奖学金.</p>
-              <p>第十届大学生数学竞赛(数学类)安徽赛区第三名，决赛全国二等奖.
-                <a href="https://ahmath.ustc.edu.cn/_upload/article/files/62/a8/601e21fc458ebfbf9b710f1a44e3/30d8b610-b087-42cb-8933-b4f06df7242f.pdf">[初赛]</a> 
-                <a href="https://www.cms.org.cn/upload/editor/file/20190403/03161639583.pdf">[决赛]</a>
-                <a href="https://maths.hfut.edu.cn/info/1046/2838.htm">
-                    [学院新闻1]
-                </a>
-                <a href="https://maths.hfut.edu.cn/info/1046/2828.htm">
-                    [学院新闻2]
-                </a>    
-            </p>
-            <p>
-                    第八届大学生数学竞赛(数学类)安徽赛区三等奖.
-                    <a href="https://ahmath.ustc.edu.cn/_upload/article/files/38/1a/a2d933a54eef8af6b2a0207a1f61/b84caf30-876d-4219-9784-916ed112bdcf.pdf">
-                        [链接]
-                    </a>
-            </p>
-            <p>
-                    第八届“挑战杯·中国联通”安徽省大学生课外学术科技作品竞赛一等奖.
-                    <a href="https://maths.hfut.edu.cn/info/1046/2828.htm">
-                    [链接]
-                    </a>
-            </p>
-            <p>
-            合肥工业大学数学学院十佳大学生——2019“π之星”.
-            <a href="https://mp.weixin.qq.com/s/P5sioJ1gJ1zz2HNhgZ16wA">[链接] </a>
-            </p>
-            <p>2014年安徽省高中数学联赛二等奖.
-            <a href="https://ahmath.ustc.edu.cn/_upload/article/files/1a/45/8d7468f74dd5976fd6c3cc186b8f/8dbb9c02-f15f-4162-90a1-461921e9dae0.pdf">[链接]</a>
-            </p>
-         
-          </section>
+    <section id="teach-content" class="section">
+      <h2>教学</h2>
+      <p>2024.09–至今，矩阵论助教。（授课老师：<a href="https://math.tongji.edu.cn/info/1114/8439.htm">韩建智副教授</a>）</p>
+      <p>2024.07–2024.08，Monoidal Category 讨论班主讲。（<a href="data/monoidal category/monoidal_category.html">课程主页</a>）</p>
+      <p>2023.09–2023.12，矩阵论助教。（授课老师：<a href="https://math.tongji.edu.cn/info/1114/8439.htm">韩建智副教授</a>）</p>
+      <p>2019.09–2019.12，代数学基础助教。（授课老师：<a href="http://staff.ustc.edu.cn/~juele/">乐珏副教授</a>）</p>
+    </section>
 
-    <!-- 添加足够内容以触发滚动 -->
-   
+    <section id="huojiang-content" class="section">
+      <h2>获奖</h2>
+      <p>2024–2025学年同济大学博士研究生国家奖学金。</p>
+      <p>第十届大学生数学竞赛（数学类）安徽赛区第三名，决赛全国二等奖。
+        <a href="https://ahmath.ustc.edu.cn/_upload/article/files/62/a8/601e21fc458ebfbf9b710f1a44e3/30d8b610-b087-42cb-8933-b4f06df7242f.pdf">[初赛]</a>
+        <a href="https://www.cms.org.cn/upload/editor/file/20190403/03161639583.pdf">[决赛]</a>
+        <a href="https://maths.hfut.edu.cn/info/1046/2838.htm">[学院新闻1]</a>
+        <a href="https://maths.hfut.edu.cn/info/1046/2828.htm">[学院新闻2]</a>
+      </p>
+      <p>第八届大学生数学竞赛（数学类）安徽赛区三等奖。
+        <a href="https://ahmath.ustc.edu.cn/_upload/article/files/38/1a/a2d933a54eef8af6b2a0207a1f61/b84caf30-876d-4219-9784-916ed112bdcf.pdf">[链接]</a>
+      </p>
+      <p>第八届“挑战杯·中国联通”安徽省大学生课外学术科技作品竞赛一等奖。
+        <a href="https://maths.hfut.edu.cn/info/1046/2828.htm">[链接]</a>
+      </p>
+      <p>合肥工业大学数学学院十佳大学生——2019“π之星”。<a href="https://mp.weixin.qq.com/s/P5sioJ1gJ1zz2HNhgZ16wA">[链接]</a></p>
+      <p>2014年安徽省高中数学联赛二等奖。<a href="https://ahmath.ustc.edu.cn/_upload/article/files/1a/45/8d7468f74dd5976fd6c3cc186b8f/8dbb9c02-f15f-4162-90a1-461921e9dae0.pdf">[链接]</a></p>
+    </section>
   </main>
 </div>
+
+<script>
+  function initSmoothScroll() {
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+        
+        if (!target) return;
+
+        // 判断是否为小屏（与 CSS 响应式断点一致）
+        const isMobile = window.innerWidth <= 768;
+
+        if (isMobile) {
+          // 小屏：滚动整个页面
+          const offsetTop = target.offsetTop ; // 减去 header 高度（约 60px）
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        } else {
+          // 大屏：滚动右侧内容区
+          const wrapper = document.querySelector('.content-wrapper');
+          if (!wrapper) return;
+          
+          const rect = target.getBoundingClientRect();
+          const wrapperRect = wrapper.getBoundingClientRect();
+          const scrollTop = wrapper.scrollTop;
+          const relativeTop = rect.top - wrapperRect.top + scrollTop - 20;
+          
+          wrapper.scrollTo({
+            top: relativeTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  }
+
+  // 等待 MathJax 渲染完成（如果使用）
+  if (window.MathJax) {
+    window.MathJax.startup.promise.then(() => {
+      initSmoothScroll();
+    });
+  } else {
+    document.addEventListener('DOMContentLoaded', initSmoothScroll);
+  }
+</script>
 
 </body>
 </html>
