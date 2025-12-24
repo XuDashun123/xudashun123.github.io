@@ -1,46 +1,150 @@
-<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<html >
+<!DOCTYPE html>
+<html lang="zh">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>Monoidal Category</title>
-<script type="text/javascript" async  
-      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">  
-</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Monoidal Category 讨论班</title>
+  <!-- MathJax v2.7.7（与你原版一致） -->
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #fafafa;
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.8em;
+      color: #2c3e50;
+    }
+
+    .book-ref {
+      text-align: center;
+      margin: 15px 0 25px;
+      font-style: italic;
+      color: #555;
+    }
+
+    .lecture {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      border-left: 4px solid #3498db;
+    }
+
+    .lecture h2 {
+      font-size: 1.3em;
+      margin-bottom: 12px;
+      color: #2980b9;
+    }
+
+    .lecture p {
+      margin-bottom: 12px;
+      text-align: justify;
+    }
+
+    .lecture a {
+      color: #2980b9;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .lecture a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      display: none; /* 不再需要 <hr>，用卡片间距代替 */
+    }
+
+    /* 响应式：小屏优化 */
+    @media (max-width: 600px) {
+      body {
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+      }
+
+      .book-ref {
+        font-size: 0.95em;
+        margin: 10px 0 20px;
+      }
+
+      .lecture {
+        padding: 16px;
+        border-radius: 6px;
+      }
+
+      .lecture h2 {
+        font-size: 1.2em;
+      }
+    }
+  </style>
 </head>
 <body>
-<h1>Monoidal Category 讨论班主页 </h1>
-<p>参考书：Vladimir Turaev, Alexis Virelizier. Monoidal Categories and Topological Field Theory.</p>
-<hr>
 
-<p>第一次课讲义：<a href="2024.7.10.pdf">[2024.7.10]</a>.</p>
-<p>摘要：本次课程主要介绍了范畴，函子，自然变换以及monoidal范畴\((\mathcal{C},\mathbf{1},\otimes,a,r,l)\)对应的概念，引入了图计算的概念，证明了\(\mathrm{End}_{\mathcal{C}}(\mathbf{1})\)是含幺交换半群。</p>
-<hr>
-<p>第二次课讲义：<a href="2024.7.21.pdf">[2024.7.21]</a>.</p>
-<p>摘要：在monoidal范畴\(\mathcal{C}\)中，引入Pairing的定义，由此给出左右对偶的概念，定义了左(右)rigid范畴，左(右)对偶函子。当左(右)对偶函子一致时，引入pivotal范畴的概念，并给出了pivotal范畴中图计算的一些记号，证明了\(\psi_X:X\to X^{**}\)是同构。
-</p>
-<hr>
-<p>第三次课讲义：<a href="2024.7.28.pdf">[2024.7.28]</a>.</p>
-<p>
-      证明了\(\psi_X:X\to X^{**}\)是\(\mathbf{1}_{\mathcal{C}}\)到双对偶函子\(?^{**}\)的monoidal自然同构。针对
+  <h1>Monoidal Category 讨论班主页</h1>
+  
+  <p class="book-ref">参考书：Vladimir Turaev, Alexis Virelizier. <em>Monoidal Categories and Topological Field Theory</em>.</p>
+
+  <div class="lecture">
+    <h2>第一次课 · 2024.7.10</h2>
+    <p><a href="2024.7.10.pdf">[讲义下载]</a></p>
+    <p>本次课程主要介绍了范畴，函子，自然变换以及 monoidal 范畴 \((\mathcal{C},\mathbf{1},\otimes,a,r,l)\) 对应的概念，引入了图计算的概念，证明了 \(\mathrm{End}_{\mathcal{C}}(\mathbf{1})\) 是含幺交换半群。</p>
+  </div>
+
+  <div class="lecture">
+    <h2>第二次课 · 2024.7.21</h2>
+    <p><a href="2024.7.21.pdf">[讲义下载]</a></p>
+    <p>在 monoidal 范畴 \(\mathcal{C}\) 中，引入 Pairing 的定义，由此给出左右对偶的概念，定义了左(右)rigid 范畴，左(右)对偶函子。当左(右)对偶函子一致时，引入 pivotal 范畴的概念，并给出了 pivotal 范畴中图计算的一些记号，证明了 \(\psi_X:X\to X^{**}\) 是同构。</p>
+  </div>
+
+  <div class="lecture">
+    <h2>第三次课 · 2024.7.28</h2>
+    <p><a href="2024.7.28.pdf">[讲义下载]</a></p>
+    <p>
+      证明了 \(\psi_X:X\to X^{**}\) 是 \(\mathbf{1}_{\mathcal{C}}\) 到双对偶函子 \(?^{**}\) 的 monoidal 自然同构。针对
       \[
       S=((X_1,\varepsilon_1),(X_2,\varepsilon_2),\cdots,(X_n,\varepsilon_n))
       \]
-      定义\(ev_S\)和\(coev_S\)。引入了同构\(\Psi_X:X_S\to(X_{S^*})^*\)。证明了任意\(f:X_S\to X_T\)自然诱导的两个\(X_{T^*}\to X_{S^*}\)是一致的。引入了左右迹，左右维数的概念，证明了一些关于左右迹的性质。当左右迹一致时，定义了spherical范畴。
-</p>
-<hr>
-<p>第四次课讲义：<a href="2024.8.4.pdf">[2024.8.4]</a>.</p>
-<p>
-      给出了braided范畴的定义，证明一些图等式。引入任意\(X\in\mathrm{Ob}(\mathcal{C})\)的左右twist，当其相等时，定义了ribbon范畴。对于配备左对偶的的对称范畴，通过一些构造使其成为ribbon范畴。
-</p>
-<hr>
+      定义 \(ev_S\) 和 \(coev_S\)。引入了同构 \(\Psi_X:X_S\to(X_{S^*})^*\)。证明了任意 \(f:X_S\to X_T\) 自然诱导的两个 \(X_{T^*}\to X_{S^*}\) 是一致的。引入了左右迹，左右维数的概念，证明了一些关于左右迹的性质。当左右迹一致时，定义了 spherical 范畴。
+    </p>
+  </div>
 
-<p>第五次课讲义：<a href="2024.8.11.pdf">[2024.8.11]</a>.</p>
-<p>
-      设\(\mathbb{k}\)为含幺交换环，\(\mathrm{Mod}_{\mathbb{k}}\)为\(\mathbb{k}\)-模范畴，其为monoidal范畴。我们讨论了其上Pairing什么时候是可逆的。在自由模的情况可以通过矩阵的逆构造Pairing的逆。最后我们介绍了\(\mathbb{k}\)-范畴和一些概念：direct sum，zero object，simple object及其性质。
-</p>
-<hr>
+  <div class="lecture">
+    <h2>第四次课 · 2024.8.4</h2>
+    <p><a href="2024.8.4.pdf">[讲义下载]</a></p>
+    <p>
+      给出了 braided 范畴的定义，证明一些图等式。引入任意 \(X\in\mathrm{Ob}(\mathcal{C})\) 的左右 twist，当其相等时，定义了 ribbon 范畴。对于配备左对偶的对称范畴，通过一些构造使其成为 ribbon 范畴。
+    </p>
+  </div>
 
-
+  <div class="lecture">
+    <h2>第五次课 · 2024.8.11</h2>
+    <p><a href="2024.8.11.pdf">[讲义下载]</a></p>
+    <p>
+      设 \(\mathbb{k}\) 为含幺交换环，\(\mathrm{Mod}_{\mathbb{k}}\) 为 \(\mathbb{k}\)-模范畴，其为 monoidal 范畴。我们讨论了其上 Pairing 什么时候是可逆的。在自由模的情况可以通过矩阵的逆构造 Pairing 的逆。最后我们介绍了 \(\mathbb{k}\)-范畴和一些概念：direct sum，zero object，simple object 及其性质。
+    </p>
+  </div>
 
 </body>
 </html>
