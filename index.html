@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="徐顺 - 安徽大学大学数学教学中心讲师，研究方向：顶点算子代数" />
   <title>徐顺 | 学术主页</title>
+
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem('academic-home-theme');
+        document.documentElement.setAttribute(
+          'data-theme',
+          savedTheme === 'dark' ? 'dark' : 'light'
+        );
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
   
   <script>
     window.MathJax = {
@@ -16,21 +30,77 @@
 
   <style>
     :root {
-      --bg-top: #7f8a93;
-      --bg-bottom: #6e7a84;
-      --paper: #c8ccca;
-      --paper-soft: #c0c6c6;
-      --paper-hover: #b9c1c2;
-      --primary: #315f78;
-      --primary-hover: #214a61;
-      --primary-soft: #aebdc3;
-      --text-main: #303b42;
-      --text-strong: #202a30;
-      --text-sub: #4a565d;
-      --text-muted: #657178;
-      --border: #a8b0b2;
-      --border-soft: #b6bcbd;
-      --shadow: 0 20px 60px rgba(31, 42, 50, 0.22);
+      color-scheme: light;
+
+      /* 亮色主题：柔和、偏纸张质感，避免纯白刺眼 */
+      --bg-top: #d8dde3;
+      --bg-bottom: #c9d0d8;
+      --bg-glow: rgba(255, 255, 255, .58);
+      --paper: #f2f0ea;
+      --paper-soft: #e9e7e1;
+      --paper-hover: #e4e3de;
+      --primary: #426d88;
+      --primary-hover: #2e5872;
+      --text-main: #38434b;
+      --text-strong: #202a31;
+      --text-sub: #57636b;
+      --text-muted: #78838a;
+      --border: #c9c9c3;
+      --border-soft: #d7d5cf;
+      --timeline: #b7bab8;
+      --marker-ring: #a7adaf;
+      --panel-border: rgba(255, 255, 255, .62);
+      --shadow: 0 22px 65px rgba(48, 61, 72, .17);
+      --toggle-bg: rgba(242, 240, 234, .86);
+      --toggle-border: rgba(86, 100, 110, .22);
+      --toggle-shadow: 0 8px 26px rgba(37, 49, 58, .16);
+
+      --arxiv-bg: #efe1e0;
+      --arxiv-text: #8d4c50;
+      --arxiv-border: #ddc2c0;
+      --doi-bg: #dfe9ef;
+      --doi-text: #3f657d;
+      --doi-border: #c2d3dd;
+      --pdf-bg: #e1ebe2;
+      --pdf-text: #476c50;
+      --pdf-border: #c4d5c6;
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+
+      /* 暗色主题：深灰蓝而不是纯黑 */
+      --bg-top: #202932;
+      --bg-bottom: #161e26;
+      --bg-glow: rgba(112, 145, 168, .12);
+      --paper: #29343d;
+      --paper-soft: #303d47;
+      --paper-hover: #34434e;
+      --primary: #84b4d2;
+      --primary-hover: #a9cee5;
+      --text-main: #d6dde1;
+      --text-strong: #f0f3f5;
+      --text-sub: #b7c1c7;
+      --text-muted: #909da5;
+      --border: #46535c;
+      --border-soft: #3b4851;
+      --timeline: #52616b;
+      --marker-ring: #6d7d87;
+      --panel-border: rgba(255, 255, 255, .06);
+      --shadow: 0 24px 72px rgba(0, 0, 0, .34);
+      --toggle-bg: rgba(41, 52, 61, .88);
+      --toggle-border: rgba(207, 220, 228, .15);
+      --toggle-shadow: 0 8px 30px rgba(0, 0, 0, .28);
+
+      --arxiv-bg: #4b3438;
+      --arxiv-text: #e5a8ad;
+      --arxiv-border: #65464b;
+      --doi-bg: #304957;
+      --doi-text: #a9cee4;
+      --doi-border: #426273;
+      --pdf-bg: #354b3c;
+      --pdf-text: #add1b5;
+      --pdf-border: #496552;
     }
 
     *, *::before, *::after {
@@ -41,6 +111,7 @@
 
     html {
       scroll-behavior: smooth;
+      background: var(--bg-bottom);
     }
 
     body {
@@ -51,10 +122,11 @@
       color: var(--text-main);
       line-height: 1.75;
       background:
-        radial-gradient(circle at 15% 0%, rgba(225, 234, 238, .20), transparent 34%),
+        radial-gradient(circle at 14% 0%, var(--bg-glow), transparent 34%),
         linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+      transition: background .3s ease, color .25s ease;
     }
 
     a {
@@ -68,14 +140,67 @@
       color: var(--primary-hover);
     }
 
+    /* 亮 / 暗主题切换 */
+    .theme-toggle {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 1000;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 38px;
+      padding: 7px 12px;
+      border: 1px solid var(--toggle-border);
+      border-radius: 999px;
+      background: var(--toggle-bg);
+      color: var(--text-sub);
+      box-shadow: var(--toggle-shadow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      font: inherit;
+      font-size: .83rem;
+      font-weight: 600;
+      line-height: 1;
+      cursor: pointer;
+      user-select: none;
+      transition:
+        transform .18s ease,
+        background-color .25s ease,
+        color .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+      color: var(--primary-hover);
+    }
+
+    .theme-toggle:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 3px;
+    }
+
+    .theme-toggle-icon {
+      width: 1.15em;
+      text-align: center;
+      font-size: 1.05rem;
+      line-height: 1;
+    }
+
     .content-wrapper {
       width: min(920px, 100%);
       margin: 0 auto;
       padding: 58px 68px 70px;
       background: var(--paper);
-      border: 1px solid rgba(255, 255, 255, .22);
+      border: 1px solid var(--panel-border);
       border-radius: 20px;
       box-shadow: var(--shadow);
+      transition:
+        background-color .28s ease,
+        border-color .28s ease,
+        box-shadow .28s ease;
     }
 
     .profile {
@@ -107,7 +232,7 @@
     }
 
     .profile-affiliation {
-      color: #3d494f;
+      color: var(--text-main);
       font-size: 1.02rem;
       letter-spacing: .01em;
     }
@@ -147,7 +272,7 @@
     }
 
     .section > p {
-      color: #354148;
+      color: var(--text-main);
       font-size: .96rem;
     }
 
@@ -172,7 +297,7 @@
       position: relative;
       margin-bottom: 18px;
       padding: 2px 0 2px 24px;
-      border-left: 1px solid #9aa5a8;
+      border-left: 1px solid var(--timeline);
     }
 
     .timeline-item:last-child {
@@ -189,12 +314,12 @@
       border: 2px solid var(--paper);
       border-radius: 50%;
       background: var(--primary);
-      box-shadow: 0 0 0 1px #839096;
+      box-shadow: 0 0 0 1px var(--marker-ring);
     }
 
     .timeline-item strong {
       display: block;
-      color: #29343a;
+      color: var(--text-strong);
       font-size: 1rem;
       font-weight: 650;
     }
@@ -208,7 +333,7 @@
 
     .timeline-item .details {
       margin-top: 3px;
-      color: #4c595f;
+      color: var(--text-sub);
       font-size: .93rem;
     }
 
@@ -225,7 +350,7 @@
       border-bottom: 1px solid var(--border-soft);
       border-radius: 8px;
       counter-increment: pub-counter -1;
-      transition: background-color .18s ease, transform .18s ease;
+      transition: background-color .18s ease;
     }
 
     .pub-list li:hover {
@@ -243,7 +368,7 @@
       top: 15px;
       width: 34px;
       text-align: right;
-      color: #647279;
+      color: var(--text-muted);
       font-family: Georgia, "Times New Roman", serif;
       font-size: .91rem;
       font-weight: 600;
@@ -255,14 +380,14 @@
     }
 
     .pub-title {
-      color: #29343a;
+      color: var(--text-strong);
       font-family: Georgia, "Times New Roman", "Noto Serif SC", serif;
       font-style: italic;
       line-height: 1.65;
     }
 
     .pub-venue {
-      color: #4a575e;
+      color: var(--text-sub);
       font-size: .94rem;
     }
 
@@ -286,25 +411,29 @@
     }
 
     .tag-arxiv {
-      background: #bcaeae;
-      color: #694245;
-      border-color: #aa9798;
+      background: var(--arxiv-bg);
+      color: var(--arxiv-text);
+      border-color: var(--arxiv-border);
     }
 
     .tag-doi {
-      background: #aebdc5;
-      color: #31556b;
-      border-color: #9aacb6;
+      background: var(--doi-bg);
+      color: var(--doi-text);
+      border-color: var(--doi-border);
     }
 
     .tag-pdf {
-      background: #b2beb4;
-      color: #395b43;
-      border-color: #9eaea1;
+      background: var(--pdf-bg);
+      color: var(--pdf-text);
+      border-color: var(--pdf-border);
     }
 
     .pub-tag:hover {
-      filter: brightness(.94);
+      filter: brightness(.96);
+    }
+
+    html[data-theme="dark"] .pub-tag:hover {
+      filter: brightness(1.08);
     }
 
     .award-item {
@@ -312,7 +441,7 @@
       margin-bottom: 10px;
       padding: 8px 10px;
       border-radius: 8px;
-      color: #364249;
+      color: var(--text-main);
       font-size: .94rem;
       transition: background-color .18s ease;
     }
@@ -330,8 +459,8 @@
 
     .award-links a {
       padding-bottom: 1px;
-      border-bottom: 1px dotted #7d8b91;
-      color: #536168;
+      border-bottom: 1px dotted var(--text-muted);
+      color: var(--text-sub);
       font-size: .83rem;
     }
 
@@ -341,7 +470,7 @@
     }
 
     sup {
-      color: #6b777d;
+      color: var(--text-muted);
       font-size: .72em;
     }
 
@@ -351,9 +480,17 @@
         background: var(--paper);
       }
 
+      .theme-toggle {
+        top: 12px;
+        right: 12px;
+        min-height: 34px;
+        padding: 6px 10px;
+        background: color-mix(in srgb, var(--paper) 88%, transparent);
+      }
+
       .content-wrapper {
         width: 100%;
-        padding: 38px 24px 52px;
+        padding: 52px 24px 52px;
         border: none;
         border-radius: 0;
         box-shadow: none;
@@ -407,7 +544,7 @@
         scroll-behavior: auto;
       }
 
-      * {
+      *, *::before, *::after {
         transition: none !important;
       }
     }
@@ -415,6 +552,18 @@
 </head>
 
 <body>
+
+  <button
+    class="theme-toggle"
+    id="themeToggle"
+    type="button"
+    aria-label="切换为暗色主题"
+    aria-pressed="false"
+    title="切换为暗色主题"
+  >
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-text">暗色</span>
+  </button>
 
 
 
@@ -876,11 +1025,54 @@
 (function () {
   'use strict';
 
+  /* 自动计算论文总数，并从总数倒序编号 */
   var pubList = document.querySelector('.pub-list');
   if (pubList) {
     var totalPubs = pubList.children.length;
     pubList.style.counterReset = 'pub-counter ' + (totalPubs + 1);
   }
+
+  /* 亮色 / 暗色主题切换，并记住用户选择 */
+  var themeToggle = document.getElementById('themeToggle');
+  var root = document.documentElement;
+
+  function getTheme() {
+    return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  }
+
+  function updateThemeButton() {
+    if (!themeToggle) return;
+
+    var isDark = getTheme() === 'dark';
+    var icon = themeToggle.querySelector('.theme-toggle-icon');
+    var label = themeToggle.querySelector('.theme-toggle-text');
+    var actionText = isDark ? '亮色' : '暗色';
+
+    if (icon) icon.textContent = isDark ? '☀' : '☾';
+    if (label) label.textContent = actionText;
+
+    themeToggle.setAttribute('aria-pressed', String(isDark));
+    themeToggle.setAttribute('aria-label', '切换为' + actionText + '主题');
+    themeToggle.setAttribute('title', '切换为' + actionText + '主题');
+  }
+
+  function setTheme(theme) {
+    root.setAttribute('data-theme', theme);
+    try {
+      localStorage.setItem('academic-home-theme', theme);
+    } catch (e) {
+      /* localStorage 不可用时仍可正常切换当前页面 */
+    }
+    updateThemeButton();
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function () {
+      setTheme(getTheme() === 'dark' ? 'light' : 'dark');
+    });
+  }
+
+  updateThemeButton();
 })();
 </script>
 
