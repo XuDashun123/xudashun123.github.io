@@ -213,11 +213,10 @@
     }
 
     /* ================================
-       论文列表：从 [10] 倒序到 [1]
+       论文列表：自动按论文总数倒序编号
        ================================ */
     .pub-list {
       list-style: none;
-      counter-reset: pub-counter 11;
       padding: 0;
     }
     
@@ -481,7 +480,20 @@
 
       <h2 class="section-title">论文</h2>
 
-      <ol reversed start="10" class="pub-list">
+      <ol class="pub-list">
+
+        <li>
+          <span class="self-author">Shun Xu</span>.
+          <span class="pub-title">
+            Classification of Strongly Rational Vertex Operator Algebras with Central and Effective Central Charge One
+          </span>, 2026.
+          <span class="pub-tags">
+            <a
+              href="https://zenodo.org/records/22092019"
+              class="pub-tag tag-arxiv"
+            >Zenodo</a>
+          </span>
+        </li>
 
         <li>
           <span class="self-author">Shun Xu</span>.
@@ -866,6 +878,14 @@
 (function() {
 
   'use strict';
+
+  /* 自动计算论文总数，并从总数倒序编号 */
+  var pubList = document.querySelector('.pub-list');
+
+  if (pubList) {
+    var totalPubs = pubList.children.length;
+    pubList.style.counterReset = 'pub-counter ' + (totalPubs + 1);
+  }
 
   var navLinks = document.querySelectorAll('nav a');
   var sections = document.querySelectorAll('.section');
